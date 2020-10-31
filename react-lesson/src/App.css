@@ -1,9 +1,22 @@
 .app-wrapper {
-  display: grid;
-  grid-template-rows: 100px 2fr;
-  grid-template-columns: 1fr 20fr;
-  grid-gap: 10px;
-  grid-template-areas: "h h" "n c";
-  margin: 0px 300px;
+    display: grid;
+    grid-template-rows: 100px 2fr;
+    grid-template-columns: 1fr 20fr;
+    grid-gap: 10px;
+    grid-template-areas: "h h" "n c";
+    margin: 0px 300px;
 
+}
+
+.app-wrapper-content {
+
+    grid-area: c;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .3),
+    -23px 0 20px -23px rgba(0, 0, 0, .8),
+    23px 0 20px -23px rgba(0, 0, 0, .8),
+    0 0 40px rgba(0, 0, 0, .1) inset;
+    padding: 10px 10px;
+}
+.item {
+    text-decoration: none;
 }
