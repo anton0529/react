@@ -8,7 +8,7 @@ const Post = (props) => {
             <img src='https://avotar.ru/avatar/naruto/100/33.jpg'/>
             {props.massage}
             <div>
-                <span>Like</span>
+                <span>Likes {props.likesCount}</span>
             </div>
         </div>
     );
