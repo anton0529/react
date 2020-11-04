@@ -14,4 +14,18 @@
 .dialogItems{
 
 }
+.dialogs textarea{
+    background-color: #fafafa;
+    border:0;
+    box-shadow:0 0 4px rgba(0,0,0,0.3);
+    transition: .3s box-shadow;
+}
+.dialogs button{
+    background-color: #fafafa;
+    border:0;
+    box-shadow:0 0 4px rgba(0,0,0,0.3);
+    transition: .3s box-shadow;
+    font-family: "!Basket of Hammers";
+    background-color: #55e7fc;
 
+}
