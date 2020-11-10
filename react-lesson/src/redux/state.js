@@ -1,3 +1,6 @@
+import profileReducer from "./profile-reducer";
+import dialogsReducer from "./dialogs-reducer";
+
 let store = {
     _state: {
         profilePage: {
@@ -10,13 +13,14 @@ let store = {
         },
         dialogsPage: {
             messages: [
-                {id: 1, message: 'Hi'},
-                {id: 2, message: 'how is yoo day'},
-                {id: 3, message: 'yo'},
-                {id: 4, message: 'yo'},
-                {id: 5, message: 'yp'},
-                {id: 6, message: 'tr'}
+                {id: 1, dialogText: 'Hi'},
+                {id: 2, dialogText: 'how is yoo day'},
+                {id: 3, dialogText: 'yo'},
+                {id: 4, dialogText: 'yo'},
+                {id: 5, dialogText: 'yp'},
+                {id: 6, dialogText: 'tr'}
             ],
+
             dialogs: [
                 {id: 1, name: 'Dimych'},
                 {id: 2, name: 'Andrey'},
@@ -24,8 +28,9 @@ let store = {
                 {id: 4, name: 'Sasha'},
                 {id: 5, name: 'Viktor'},
                 {id: 6, name: 'Valera'}
-            ]
-        }
+            ],
+            newMessageText: 'dsdsdsdsdsd'
+        },
     },
     getState() {
         return this._state;
@@ -34,41 +39,19 @@ let store = {
     _callSubscriber() {
         console.log('state changed')
     },
-    addPost() {
-        let newPost = {
-            id: 5,
-            message: this._state.profilePage.newPostText,
-            likesCount: 0
-        };
-        this._state.profilePage.newPostText = '';
-        this._state.profilePage.posts.push(newPost);
-        this._callSubscriber(this._state);
 
-    },
-    updateNewPostText(newText) {
-        this._state.profilePage.newPostText = newText;
-        this._callSubscriber(this._state);
-    },
     subscribe(observer) {
-        this._callSubscriber = observer
+        this._callSubscriber = observer;
     },
 
     dispatch(action) {
-        if (action.type === 'ADD-POST') {
-            let newPost = {
-                id: 5,
-                message: this._state.profilePage.newPostText,
-                likesCount: 0
-            };
-            this._state.profilePage.newPostText = '';
-            this._state.profilePage.posts.push(newPost);
-            this._callSubscriber(this._state);
-        } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
-            this._state.profilePage.newPostText = action.newText;
-            this._callSubscriber(this._state);
-        }
+
+        this._state.profilePage = profileReducer(this._state.profilePage, action);
+        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
+        this._callSubscriber(this._state);
 
     }
+
 };
 
 
